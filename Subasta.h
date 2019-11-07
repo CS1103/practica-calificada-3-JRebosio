@@ -82,10 +82,11 @@ public:
         auto it=m.begin();
         for (auto &it : m) {
             myfile<<it.first<<'\n';
-            for ()
+            for (auto &u : it.second.begin())
+            {
+                myfile<<
+            }
         }
-
-
 
         }
 

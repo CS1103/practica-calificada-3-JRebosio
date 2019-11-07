@@ -81,7 +81,8 @@ public:
         Erase();
         auto it=m.begin();
         for (auto &it : m) {
-            myfile<<it
+            myfile<<it.first<<'\n';
+            for ()
         }
 
 

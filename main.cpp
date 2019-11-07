@@ -8,6 +8,8 @@ int main() {
     ofstream myfile;
 
     myfile.open("C:\\POO2\\practica-calificada-3-JRebosio\\resultado.txt");
+    //myfile.open("resultado.text");
     subasta.Save(myfile);
+    myfile.close();
     return 0;
 }

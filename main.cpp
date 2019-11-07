@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Subasta.h"
+#include <fstream>
+#include <sstream>
 using namespace std;
 int main() {
     Subasta subasta{"bif_example.txt"};

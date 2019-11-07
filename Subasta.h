@@ -10,6 +10,7 @@
 #include <sstream>
 #include <map>
 #include <set>
+#include <vector>
 using namespace std;
 
 
@@ -77,9 +78,16 @@ public:
     }
 
     void Save(std::ofstream& myfile){
+        Erase();
+        auto it=m.begin();
+        for (auto &it : m) {
+            myfile<<it
+        }
 
 
-    }
+
+        }
+
 
 
 private:

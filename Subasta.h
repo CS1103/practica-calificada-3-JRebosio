@@ -21,8 +21,8 @@ struct contestant {
     bool operator <(contestant other)const{
         return money<other.money;
     }
-
 };
+
 map<string, set<contestant>> m;
 map<string, int> counts;
 
@@ -71,8 +71,9 @@ public:
                     getline(cin,producto);
                 }
                 for (auto &it : m[of]) counts[it.name]++;
-                l++;
+
             }
+            l++;
 
         }
     }
@@ -89,9 +90,6 @@ public:
         }
     }
 
-
-
-private:
 
 
 

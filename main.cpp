@@ -4,12 +4,12 @@
 #include <sstream>
 using namespace std;
 int main() {
-    Subasta subasta{"bif_example.txt"};
+    Subasta subasta("C:/POO2/practica-calificada-3-JRebosio/bid_example.txt");
     ofstream myfile;
+    
+    myfile.open("C:\\POO2\\practica-calificada-3-JRebosio\\resultado.txt");
 
-    //myfile.open("C:\\POO2\\practica-calificada-3-JRebosio\\resultado.txt");
-    myfile.open("resultado.text");
     subasta.Save(myfile);
-    myfile.close();
+    myfile.close()
     return 0;
 }

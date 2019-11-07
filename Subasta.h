@@ -77,18 +77,17 @@ public:
         }
     }
 
-    void Save(std::ofstream& myfile){
+    void Save(std::ofstream& myfile) {
         Erase();
-        auto it=m.begin();
-        for (auto &it : m) {
-            myfile<<it.first<<'\n';
-            for (auto &u : it.second.begin())
-            {
-                myfile<<
+
+        for (auto &u : m) {
+            myfile << u.first;
+            for (auto i = u.second.begin(); i != u.second.end();) {
+                auto x=*i;
+                myfile << x.name<< " "<<x.money<<'\n';
             }
         }
-
-        }
+    }
 
 
 

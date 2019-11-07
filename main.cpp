@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Subasta.h"
-
+using namespace std;
 int main() {
     Subasta subasta{"bif_example.txt"};
     ofstream myfile;

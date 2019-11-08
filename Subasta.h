@@ -16,6 +16,8 @@ using namespace std;
 
 
 
+
+
 struct contestant {
     string name;
     int money;
@@ -30,52 +32,55 @@ struct contestant {
 
 
 
+
 bool isproduct(const string& word)
 {
     for(auto& c: word)
-        if(!isspace(static_cast<unsigned char>(c)))
+        if(!isspace(static_cast<unsigned char>(c))){
+            if (isdigit(static_cast<unsigned char>(c) ))
+                continue;
             if(!isupper(static_cast<unsigned char>(c)))
                 return false;
+
+        }
     return true;
 }
-
-class Subasta{
+class Subasta {
 public:
-
-
-
     Subasta(string file) {
         ifstream s(file);
         string producto;
-        getline(cin, producto);
+        getline(s, producto);
         int l = 1;
         while (l != 5) {
             if (isproduct(producto)) {
-                string of=producto;
-                getline(cin, producto);
+                string of = producto;
+                getline(s, producto);
                 m[of];
                 while (!isproduct(producto)) {
                     contestant temp;
                     stringstream ss(producto);
                     ss >> temp.name >> temp.money;
                     m[of].insert(temp);
-                    if (!getline(cin,producto)) break;
+                    if (!getline(s, producto)) break;
 
                 }
-                double prom=0;
-                for (auto &it : m[of]){
+                double prom = 0;
+                for (auto &it : m[of]) {
                     counts[it.name]++;
-                    prom+=it.money;
+                    prom += it.money;
                 }
-                promedio[of]=prom/m[of].size();
+                promedio[of] = prom / m[of].size();
             }
             l++;
         }
+
     }
+
     void Erase() {
         for (auto &u : m) {
             for (auto i = u.second.begin(); i != u.second.end();) {
-                auto x=*i;
+                auto x = *i;
                 if (counts[x.name] > 1) u.second.erase(i++);
                 else ++i;
             }
@@ -83,8 +88,7 @@ public:
     }
 
 
-
-    void Save(std::ofstream& myfile) {
+    void Save(std::ofstream &myfile) {
         Erase();
         for (auto &u : m) {
             auto j = *u.second.begin();
@@ -95,16 +99,18 @@ public:
                 myfile << x.name << " " << x.money << '\n';
             }
         }
-}
-
-
+    }
 
 private:
     map<string, set<contestant>> m;
     map<string, int> counts;
     map<string,double> promedio;
-
 };
+
+
+
+
+
 
 
 

@@ -4,12 +4,10 @@
 #include <sstream>
 using namespace std;
 int main() {
-    Subasta subasta("bid_example.txt");
-    cout<<"hola";
+    Subasta subasta ("bid_example.txt");
     ofstream myfile;
     myfile.open ("example.txt");
     subasta.Save(myfile);
-    cout<<"hola";
     myfile.close();
     return 0;
 }

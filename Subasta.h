@@ -23,20 +23,11 @@ struct contestant {
     }
 };
 
-map<string, set<contestant>> m;
-map<string, int> counts;
 
 
 
-void Erase() {
-    for (auto &u : m) {
-        for (auto i = u.second.begin(); i != u.second.end();) {
-            auto x=*i;
-            if (counts[x.name] > 1) u.second.erase(i++);
-            else ++i;
-        }
-    }
-}
+
+
 
 bool isproduct(const string& word)
 {
@@ -49,6 +40,9 @@ bool isproduct(const string& word)
 
 class Subasta{
 public:
+
+
+
     Subasta(string file) {
         ifstream s(file);
         string producto;
@@ -78,6 +72,16 @@ public:
         }
     }
 
+    void Erase() {
+        for (auto &u : m) {
+            for (auto i = u.second.begin(); i != u.second.end();) {
+                auto x=*i;
+                if (counts[x.name] > 1) u.second.erase(i++);
+                else ++i;
+            }
+        }
+    }
+
     void Save(std::ofstream& myfile) {
         Erase();
 
@@ -90,7 +94,9 @@ public:
         }
     }
 
-
+private:
+    map<string, set<contestant>> m;
+    map<string, int> counts;
 
 
 };

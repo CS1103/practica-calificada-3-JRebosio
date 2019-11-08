@@ -5,7 +5,11 @@
 using namespace std;
 int main() {
     Subasta subasta("bid_example.txt");
+    cout<<"hola";
     ofstream myfile;
-    cout<<"ggg";
+    myfile.open ("example.txt");
+    subasta.Save(myfile);
+    cout<<"hola";
+    myfile.close();
     return 0;
 }

@@ -15,11 +15,12 @@ using namespace std;
 
 
 
+
 struct contestant {
     string name;
     int money;
     bool operator <(contestant other)const{
-        return money<other.money;
+        return money>=other.money;
     }
 };
 
@@ -46,32 +47,31 @@ public:
     Subasta(string file) {
         ifstream s(file);
         string producto;
-        getline(s, producto);
+        getline(cin, producto);
         int l = 1;
         while (l != 5) {
             if (isproduct(producto)) {
                 string of=producto;
                 getline(cin, producto);
-                stringstream ss(producto);
-                string name;
-                int money;
                 m[of];
                 while (!isproduct(producto)) {
-                    ss >> name >> money;
                     contestant temp;
-                    temp.name=name;
-                    temp.money=money;
+                    stringstream ss(producto);
+                    ss >> temp.name >> temp.money;
                     m[of].insert(temp);
-                    getline(cin,producto);
-                }
-                for (auto &it : m[of]) counts[it.name]++;
+                    if (!getline(cin,producto)) break;
 
+                }
+                double prom=0;
+                for (auto &it : m[of]){
+                    counts[it.name]++;
+                    prom+=it.money;
+                }
+                promedio[of]=prom/m[of].size();
             }
             l++;
-
         }
     }
-
     void Erase() {
         for (auto &u : m) {
             for (auto i = u.second.begin(); i != u.second.end();) {
@@ -82,22 +82,27 @@ public:
         }
     }
 
+
+
     void Save(std::ofstream& myfile) {
         Erase();
-
         for (auto &u : m) {
-            myfile << u.first;
-            for (auto i = u.second.begin(); i != u.second.end();) {
-                auto x=*i;
-                myfile << x.name<< " "<<x.money<<'\n';
+            auto j = *u.second.begin();
+            auto z = *(--u.second.end());
+            myfile << u.first << "," << j.money << "," << promedio[u.first] << "," << z.money << '\n';
+            for (auto i = u.second.begin(); i != u.second.end(); i++) {
+                auto x = *i;
+                myfile << x.name << " " << x.money << '\n';
             }
         }
-    }
+}
+
+
 
 private:
     map<string, set<contestant>> m;
     map<string, int> counts;
-
+    map<string,double> promedio;
 
 };
 

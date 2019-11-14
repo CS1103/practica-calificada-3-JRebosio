@@ -15,7 +15,7 @@ bool isproduct(const string &word){
 
 
 void Subasta::Save(std::ofstream &myfile) {
-        Erase();
+        //Erase();
         for (const auto &u : m) {
             vector<contestant> temp;
             copy(u.second.begin(),u.second.end(),back_inserter(temp));
@@ -38,12 +38,12 @@ void Subasta::Erase() {
         }
 }
 
-Subasta::Subasta(string file) {
+Subasta::Subasta(const string& file) {
         ifstream s(file);
         string producto;
         getline(s, producto);
         int l = 1;
-        while (l != 5) {
+        while (l) {
             int mx=0;
             int mn=1000;
             if (isproduct(producto)) {
@@ -55,7 +55,10 @@ Subasta::Subasta(string file) {
                     stringstream ss(producto);
                     ss >> temp.name >> temp.money;
                     m[of].insert(temp);
-                    if (!getline(s, producto)) break;
+                    if (!getline(s, producto)){
+                        l=0;
+                        break;
+                    }
                 }
                 double prom = 0;
                 for (auto &it : m[of]) {
@@ -68,7 +71,6 @@ Subasta::Subasta(string file) {
                 max[of]=mx;
                 promedio[of] = prom / m[of].size();
             }
-            l++;
         }
     }
 

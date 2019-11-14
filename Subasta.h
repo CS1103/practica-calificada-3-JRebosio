@@ -19,10 +19,8 @@ using namespace std;
 struct contestant {
     string name;
     int money;
-    bool operator <(const contestant& other)const{
-        if (money>other.money and name!=other.name) return true;
-        else if (money==other.money and name!=other.name) return true;
-        else return false;
+    bool operator <(const contestant& other) const{
+        return (money>=other.money and name!=other.name);
     }
 };
 
@@ -37,7 +35,7 @@ class Subasta {
 public:
 
 
-    Subasta(string file);
+    Subasta(const string& file);
     void Erase() ;
     void Save(std::ofstream &myfile);
 

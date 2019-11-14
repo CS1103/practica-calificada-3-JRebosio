@@ -1,9 +1,9 @@
 MACBOOK PRO
 alias9 10
 alias2 11
+alias2 9
 alias3 20
 alias8 10
-alias2 9
 alias1 10
 THINKPAD P50
 alias4 50

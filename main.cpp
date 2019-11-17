@@ -3,8 +3,9 @@
 #include <fstream>
 #include <sstream>
 
-
 using namespace std;
+
+
 int main() {
     Subasta subasta ("bid_example.txt");
     ofstream myfile;

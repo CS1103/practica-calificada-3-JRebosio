@@ -19,12 +19,12 @@ using namespace std;
 struct contestant {
     string name;
     int money;
-    bool operator <(const contestant& other) const{
-        return (money>=other.money and name!=other.name);
+
+    bool operator<(const contestant &other) const {
+        //return name!=other.name;
+        return name != other.name && money >= other.money;
     }
 };
-
-
 
 bool isproduct(const string& word);
 

@@ -15,7 +15,7 @@ bool isproduct(const string &word){
 
 
 void Subasta::Save(std::ofstream &myfile) {
-        //Erase();
+        Erase();
         for (const auto &u : m) {
             vector<contestant> temp;
             copy(u.second.begin(),u.second.end(),back_inserter(temp));
